@@ -79,9 +79,9 @@
 
 		return new Array(wordLength).fill().reduce((word, _, key) => {
 			if(key % 2 === 0) {
-				return word + consonants[getRandomNumber([0, consonants.length])];
+				return word + consonants[getRandomNumber([0, consonants.length - 1])];
 			} else {
-				return word + vowels[getRandomNumber([0, vowels.length])];
+				return word + vowels[getRandomNumber([0, vowels.length - 1])];
 			}
 		}, '');
 	};

@@ -28,71 +28,86 @@ schemaMock(schema, config[)
 ```
 
 ### Parameters
-* schema
-⋅⋅⋅ An object which specifies the structure of the result.
-* config
-⋅⋅⋅ A configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
+* **schema**
+An object which specifies the structure of the result.
+* **config**
+A configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
 
 ## API
 
 ### Supported types
-* WORD
+* **WORD**
 ```javascript
 schemaMock({
-	place: 'WORD',
-});
+	place: 'WORD'
+}); 
+
+// Object { place: "jezug" }
 ```
-* NAME
+* **NAME**
 ```javascript
 schemaMock({
-	name: 'NAME',
-});
+	name: 'NAME'
+}); 
+
+// Object { name: "Xolapu Moreni Rupuhixe" }
 ```
-* SENTENCE
+* **SENTENCE**
 ```javascript
 schemaMock({
 	description: 'SENTENCE'
-});
+}); 
+
+// Object { description: "Hivilonu jowux wogo zilaxexa hijo vocefe fuzar." }
 ```
-* PARAGRAPH
+* **PARAGRAPH**
 ```javascript
 schemaMock({
 	article: 'PARAGRAPH'
 });
 ```
-* BOOLEAN
+* **BOOLEAN**
 ```javascript
 schemaMock({
 	isOffline: 'BOOLEAN'
-});
+}); 
+
+// Object { article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu." }
 ```
-* DATE
+* **DATE**
 ```javascript
 schemaMock({
 	meetingDate: 'DATE'
-});
+}); 
+
+// Object { meetingDate: Date Tue Dec 03 1974 22:03:35 GMT+0200 (Eastern European Standard Time) }
 ```
-* NUMBER
+* **NUMBER**
 ```javascript
 schemaMock({
 	id: 'NUMBER'
-});
+}); 
+
+// Object { id: 7111080744192283 }
 ```
-* PHONE_NUMBER
+* **PHONE_NUMBER**
 ```javascript
 schemaMock({
 	phoneNumber: 'PHONE_NUMBER'
-});
+}); 
+
+// Object { phoneNumber: "3346807899" }
 ```
-* CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>
+* **CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>**
 ```javascript
 schemaMock({
-	phoneNumber: 'PHONE_NUMBER'
-});
+	magicNumber: 'CUSTOM_NUMBER_23-167'
+}); 
+
+// Object { magicNumber: 42 }
 ```
 
-## Example
-Explain how to run the automated tests for this system
+## Example of nested types
 
 ```javascript
 const schema = {
@@ -102,16 +117,29 @@ const schema = {
 	price: 'CUSTOM_NUMBER_10-30',
 	expirationDate: 'DATE',
 	ingredients: [{
-		name: 'NAME',
+		name: 'WORD',
 		quantity: 'CUSTOM_NUMBER_5-13'
 	}]
 };
 
 schemaMock(schema);
+/*
+{
+	id: 677404510061448,
+	name: 'Geqi Tacariwi Pitaheba Pala',
+	description: 'Turar suvete wofah xuvome hofufi laboma nihigilu teqiz.',
+	price: 8,
+	expirationDate: '1958-04-23T02:48:28.493Z',
+	ingredients: [{
+		name: 'bigohu',
+		quantity: 6
+	}, {
+		name: 'ceboxodi',
+		quantity: 12
+	}]
+}
+*/
 ```
-
-## Versioning
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 * **Andrew** - [iAndy3](https://github.com/iAndy3)
