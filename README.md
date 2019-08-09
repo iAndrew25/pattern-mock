@@ -1,5 +1,5 @@
 # Schema mock
-Generates mock data based on a specified schema.
+Generates mock data based on a specified object schema.
 
 ### Installing
 To use with node:
@@ -29,9 +29,9 @@ schemaMock(schema, config[)
 
 ### Parameters
 * **schema**
-An object which specifies the structure of the result.
+  An object which specifies the structure of the result.
 * **config**
-A configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
+  A configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
 
 ## API
 
