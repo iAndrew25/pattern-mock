@@ -3,6 +3,13 @@ const getRandomNumber = ([min, max]) => Math.floor(Math.random() * (max - min + 
 
 const toTitleCase = string => string.split(' ').map(word => `${word[0].toUpperCase()}${word.substr(1).toLowerCase()}`).join(' ');
 
+const getRandomBoolean = () => Math.random() > 0.5;
+
+const getRandomDate = () => {
+	const maxDate = Date.now();
+
+	return new Date(getRandomNumber([-maxDate, maxDate]));
+};
 
 const getRandomParagraph = range => {
 	const sentenceCount = getRandomNumber(range);
@@ -30,7 +37,7 @@ const getRandomSentence = range => {
 	}, '');
 };
 
-const getRandomName = (nameCount, range) => {
+const getRandomName = (range, nameCount) => {
 	return new Array(nameCount).fill().map(_ => toTitleCase(getRandomWord(range))).join(' ');
 };
 
@@ -40,11 +47,16 @@ const getRandomWord = range => {
 
 	const wordLength = getRandomNumber(range);
 
-	return new Array(wordLength).fill().map((_, key) => {
+	return new Array(wordLength).fill().reduce((word, _, key) => {
 		if(key % 2 === 0) {
-			return consonants[getRandomNumber([0, consonants.length])];
+			return `${word}${consonants[getRandomNumber([0, consonants.length])]}`;
 		} else {
-			return vowels[getRandomNumber([0, vowels.length])];
+			return `${word}${vowels[getRandomNumber([0, vowels.length])]}`;
 		}
-	}).join('');
+	}, '');
 };
+
+console.log("getRandomParagraph", getRandomParagraph([7, 4]));
+console.log("getRandomSentence", getRandomSentence([7, 4]));
+console.log("getRandomName", getRandomName([7, 4], 3));
+console.log("getRandomWord", getRandomWord([7, 4]));
