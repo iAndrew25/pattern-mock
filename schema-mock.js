@@ -9,6 +9,8 @@
 		}
 	}
 }(this, function() {
+	'use strict';
+	
 	const getRandomNumber = ([min, max]) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 	const toTitleCase = string => string.split(' ').map(word => `${word[0].toUpperCase()}${word.substr(1).toLowerCase()}`).join(' ');
