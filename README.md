@@ -28,10 +28,8 @@ schemaMock(schema, config[)
 ```
 
 ### Parameters
-* schema
-An object which specifies the structure of the result.
-* config
-A configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
+* **schema** - an object which specifies the structure of the result.
+* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
  
 ## API
 
