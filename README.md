@@ -29,7 +29,6 @@ const mock = {
 boolean
 date,
 
-gender,
 name,
 word,
 sentence,
