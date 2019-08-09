@@ -25,3 +25,18 @@ const mock = {
 		wife: null
 	}
 }
+
+boolean
+date,
+
+gender,
+name,
+word,
+sentence,
+paragraph
+
+number,
+custom number min max,
+phone number,
+
+email,
