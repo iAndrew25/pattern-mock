@@ -37,5 +37,3 @@ paragraph
 number,
 custom number min max,
 phone number,
-
-email,
