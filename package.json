@@ -1,0 +1,24 @@
+{
+  "name": "schema-mock",
+  "version": "1.0.0",
+  "description": "Generates mock data based on a specified object schema.",
+  "main": "schema-mock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iAndy3/schema-mock.git"
+  },
+  "keywords": [
+    "mock",
+    "schema",
+    "data"
+  ],
+  "author": "Andrew",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iAndy3/schema-mock/issues"
+  },
+  "homepage": "https://github.com/iAndy3/schema-mock#readme"
+}
