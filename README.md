@@ -4,22 +4,17 @@ Generates mock data based on a specified object pattern.
 ### Installing
 To use with node:
 ```
-$ npm install <name>
+$ npm install pattern-mock
 ```
 
 Then in the console:
 ```javascript
-const patternMock = require('<name>');
+const patternMock = require('pattern-mock');
 ```
 
 To use directly in the browser:
 ```
-<script src="path/to/yourCopyOf/<name>.js"></script>
-```
-
-or the minified version:
-```
-<script src="path/to/yourCopyOf/<name>.min.js"></script>
+<script src="path/to/yourCopyOf/pattern-mock.js"></script>
 ```
 
 ## Syntax
