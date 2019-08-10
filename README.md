@@ -63,6 +63,8 @@ schemaMock({
 schemaMock({
 	article: 'PARAGRAPH'
 });
+
+// Object { article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu." }
 ```
 * **BOOLEAN**
 ```javascript
@@ -70,7 +72,7 @@ schemaMock({
 	isOffline: 'BOOLEAN'
 }); 
 
-// Object { article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu." }
+// Object { isOffline: true }
 ```
 * **DATE**
 ```javascript
@@ -126,7 +128,7 @@ schemaMock(schema);
 	id: 677404510061448,
 	name: 'Geqi Tacariwi Pitaheba Pala',
 	description: 'Turar suvete wofah xuvome hofufi laboma nihigilu teqiz.',
-	price: 8,
+	price: 23,
 	expirationDate: '1958-04-23T02:48:28.493Z',
 	ingredients: [{
 		name: 'bigohu',
