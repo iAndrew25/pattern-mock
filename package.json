@@ -1,24 +1,25 @@
 {
-  "name": "schema-mock",
+  "name": "pattern-mock",
   "version": "1.0.0",
-  "description": "Generates mock data based on a specified object schema.",
-  "main": "schema-mock.js",
+  "description": "Generates mock data based on a specified object pattern.",
+  "main": "pattern-mock.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/iAndy3/schema-mock.git"
+    "url": "git+https://github.com/iAndy3/pattern-mock.git"
   },
   "keywords": [
     "mock",
     "schema",
+    "pattern",
     "data"
   ],
   "author": "Andrew",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/iAndy3/schema-mock/issues"
+    "url": "https://github.com/iAndy3/pattern-mock/issues"
   },
-  "homepage": "https://github.com/iAndy3/schema-mock#readme"
+  "homepage": "https://github.com/iAndy3/pattern-mock#readme"
 }

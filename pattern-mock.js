@@ -5,7 +5,7 @@
 		if(typeof define === 'function' && define.amd) {
 			define(factory);
 		} else {
-			global.schemaMock = factory();
+			global.patternMock = factory();
 		}
 	}
 }(this, function() {
@@ -144,11 +144,11 @@
 		lettersInWord: [4, 8]
 	};
 
-	return (model, config = {}) => {
-		if(typeof model === 'object') {
-			return dispatcher(model, {...defaultConfig, ...config});
+	return (pattern, config = {}) => {
+		if(typeof pattern === 'object') {
+			return dispatcher(pattern, {...defaultConfig, ...config});
 		} else {
-			throw new Error(`Expected object, received '${typeof model}'.`);
+			throw new Error(`Expected object, received '${typeof pattern}'.`);
 		}
 	};	
 }));
