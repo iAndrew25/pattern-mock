@@ -6,7 +6,7 @@ Generates mock data based on a specified object pattern.
 ### Installing
 To use with node:
 ```
-$ npm install pattern-mock
+$ npm install --save-dev pattern-mock
 ```
 
 Then in the console:
@@ -19,6 +19,10 @@ To use directly in the browser:
 <script src="path/to/yourCopyOf/pattern-mock.js"></script>
 ```
 
+Or the minified version inside the `dist` folder:
+```
+<script src="path/to/yourCopyOf/pattern-mock.min.js"></script>
+```
 ## Syntax
 ```javascript
 patternMock(pattern, config[)

@@ -1,25 +1,33 @@
 {
-  "name": "pattern-mock",
-  "version": "1.0.1",
-  "description": "Generates mock data based on a specified object pattern.",
-  "main": "pattern-mock.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/iAndy3/pattern-mock.git"
-  },
-  "keywords": [
-    "mock",
-    "schema",
-    "pattern",
-    "data"
-  ],
-  "author": "Andrew",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/iAndy3/pattern-mock/issues"
-  },
-  "homepage": "https://github.com/iAndy3/pattern-mock#readme"
+	"name": "pattern-mock",
+	"version": "1.0.1",
+	"description": "Generates mock data based on a specified object pattern.",
+	"main": "pattern-mock.js",
+	"scripts": {
+		"minify": "terser pattern-mock.js --mangle toplevel --source-map --output dist/pattern-mock.min.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/iAndy3/pattern-mock.git"
+	},
+	"keywords": [
+		"mock",
+		"schema",
+		"pattern",
+		"data",
+		"object"
+	],
+	"author": "Andrew",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/iAndy3/pattern-mock/issues"
+	},
+	"files": [
+		"pattern-mock.js"
+	],
+	"homepage": "https://github.com/iAndy3/pattern-mock#readme",
+	"devDependencies": {
+		"terser": "4.1.3"
+	}
 }
