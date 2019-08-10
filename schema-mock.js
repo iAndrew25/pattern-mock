@@ -10,7 +10,7 @@
 	}
 }(this, function() {
 	'use strict';
-	
+
 	const getRandomNumber = ([min, max]) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 	const toTitleCase = string => string.split(' ').map(word => `${word[0].toUpperCase()}${word.substr(1).toLowerCase()}`).join(' ');
@@ -21,7 +21,7 @@
 		if(!isNaN(minValue) && !isNaN(maxValue)) {
 			return getRandomNumber([parseInt(minValue), parseInt(maxValue)]);
 		} else {
-			throw new Error('Type `CUSTOM_NUMBER` must be preceded by a range of two numbers separated by dash.');
+			throw new Error(`Expected 'CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>', received '${string}'.`);
 		}
 	};
 
@@ -148,7 +148,7 @@
 		if(typeof model === 'object') {
 			return dispatcher(model, {...defaultConfig, ...config});
 		} else {
-			throw new Error(`Expected object, received '${typeof model}'`);
+			throw new Error(`Expected object, received '${typeof model}'.`);
 		}
 	};	
 }));
