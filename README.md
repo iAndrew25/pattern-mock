@@ -19,7 +19,7 @@ To use directly in the browser:
 <script src="path/to/yourCopyOf/pattern-mock.js"></script>
 ```
 
-Or the minified version inside the `dist` folder:
+Or the minified version:
 ```
 <script src="path/to/yourCopyOf/pattern-mock.min.js"></script>
 ```

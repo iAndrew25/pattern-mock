@@ -1,0 +1,9 @@
+language: node_js
+
+stages:
+	- test
+
+tests:
+	stage: test
+	script:
+		- npm run test
