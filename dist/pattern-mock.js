@@ -15,6 +15,20 @@
 
 	const toTitleCase = string => string.split(' ').map(word => `${word[0].toUpperCase()}${word.substr(1).toLowerCase()}`).join(' ');
 
+	const getRandomColor = () => {
+		const letters = '0123456789ABCDEF';
+
+		return new Array(6).fill().reduce(total => total + letters[getRandomNumber([0, letters.length - 1])], '#');
+	};
+
+	const getRandomUrl = prefix => {
+		return `${prefix || ''}${getRandomWord({lettersInWord: [3, 10]})}.${getRandomWord({lettersInWord: [2, 4]})}`;
+	};
+
+	const getRandomEmail = () => {
+		return `${getRandomWord({lettersInWord: [2, 10]})}@${getRandomUrl()}`;
+	};
+
 	const getRandomCustomInteger = string => {
 		let [minValue, maxValue] = string.split('_')[2].split('-');
 
@@ -88,6 +102,14 @@
 		}, '');
 	};
 
+	const getRandomString = ({lettersInString}) => {
+		const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+		
+		const stringLength = getRandomNumber(lettersInString);
+
+		return new Array(stringLength).fill().reduce(string => string + letters[getRandomNumber([0, letters.length - 1])], '');
+	};
+
 	const setValue = (type, config) => {
 		switch(type) {
 			case 'WORD':
@@ -98,6 +120,15 @@
 				return getRandomSentence(config);
 			case 'PARAGRAPH':
 				return getRandomParagraph(config);
+			case 'STRING':
+				return getRandomString(config);
+
+			case 'URL':
+				return getRandomUrl('http://');
+			case 'EMAIL':
+				return getRandomEmail();
+			case 'COLOR':
+				return getRandomColor();
 
 			case 'BOOLEAN':
 				return getRandomBoolean();
@@ -116,7 +147,7 @@
 					throw new Error(`Type '${type}' is not recognized.`);
 				}
 		}
-	}
+	};
 
 	const dispatcher = (property, config) => {
 		if(property === null) {
@@ -141,7 +172,8 @@
 		sentencesInParagraph: [3, 6],
 		wordsInSentence: [5, 10],
 		wordsInName: [2, 4],
-		lettersInWord: [4, 8]
+		lettersInWord: [4, 8],
+		lettersInString: [5, 10]
 	};
 
 	return (pattern, config = {}) => {

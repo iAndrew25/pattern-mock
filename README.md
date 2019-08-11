@@ -65,6 +65,38 @@ patternMock({
 
 // Object { article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu." }
 ```
+* **STRING**
+```javascript
+patternMock({
+	randomId: 'STRING'
+});
+
+// Object { randomId: "co5dd6bGs" }
+```
+* **URL**
+```javascript
+patternMock({
+	website: 'URL'
+});
+
+// Object { website: "http://zat.wa" }
+```
+* **EMAIL**
+```javascript
+patternMock({
+	email: 'EMAIL'
+});
+
+// Object { email: "zera@cuje.vi" }
+```
+* **COLOR**
+```javascript
+patternMock({
+	color: 'COLOR'
+});
+
+// Object { color: "#747978" }
+```
 * **BOOLEAN**
 ```javascript
 patternMock({

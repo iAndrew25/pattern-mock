@@ -81,6 +81,42 @@ describe('patternMock', () => {
 			expect(typeof output.phoneNumber).toEqual('string');
 		});
 
+		test('type `EMAIL` should return a string', () => {
+			const output = patternMock({
+				email: 'EMAIL'
+			}); 
+
+			expect(typeof output.email).toEqual('string');
+			expect(output.email.includes('@')).toEqual(true);
+		});
+
+		test('type `STRING` should return a string', () => {
+			const output = patternMock({
+				randomId: 'STRING'
+			}); 
+
+			expect(typeof output.randomId).toEqual('string');
+		});
+
+		test('type `COLOR` should return a string', () => {
+			const output = patternMock({
+				color: 'COLOR'
+			}); 
+
+			expect(typeof output.color).toEqual('string');
+			expect(output.color[0]).toEqual('#');
+			expect(output.color.length).toEqual(7);
+		});
+
+		test('type `URL` should return a string', () => {
+			const output = patternMock({
+				website: 'URL'
+			}); 
+
+			expect(typeof output.website).toEqual('string');
+			expect(output.website.startsWith('http://')).toEqual(true);
+		});
+
 		test('type `RANDOM_TYPE` should throw an error', () => {
 			expect(() => patternMock({
 				randomType: 'RANDOM_TYPE'
