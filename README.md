@@ -1,6 +1,4 @@
-# Pattern mock
-![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) ![npm bundle size](https://img.shields.io/bundlephobia/min/pattern-mock?label=Minified%20size) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version)
-
+# Pattern mock · [![Build Status](https://travis-ci.org/iAndy3/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndy3/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
 Generates mock data based on a specified object pattern.
 
 ### Installing
