@@ -1,5 +1,5 @@
 # Pattern mock
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/iAndy3/pattern-mock?label=Code%20size) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version)
+![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) ![npm bundle size](https://img.shields.io/bundlephobia/min/pattern-mock?label=Minified%20size) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version)
 
 Generates mock data based on a specified object pattern.
 
