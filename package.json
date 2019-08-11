@@ -4,7 +4,7 @@
 	"description": "Generates mock data based on a specified object pattern.",
 	"main": "pattern-mock.js",
 	"scripts": {
-		"minify": "terser pattern-mock.js --mangle toplevel --source-map --output dist/pattern-mock.min.js",
+		"minify": "terser dist/pattern-mock.js --mangle toplevel --source-map --output dist/pattern-mock.min.js",
 		"test": "jest"
 	},
 	"repository": {
@@ -24,7 +24,7 @@
 		"url": "https://github.com/iAndy3/pattern-mock/issues"
 	},
 	"files": [
-		"pattern-mock.js"
+		"dist/pattern-mock.js"
 	],
 	"homepage": "https://github.com/iAndy3/pattern-mock#readme",
 	"devDependencies": {

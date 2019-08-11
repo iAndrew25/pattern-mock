@@ -1,4 +1,4 @@
-const patternMock = require('../pattern-mock');
+const patternMock = require('../dist/pattern-mock');
 
 
 describe('patternMock', () => {
