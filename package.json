@@ -1,8 +1,8 @@
 {
 	"name": "pattern-mock",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Generates mock data based on a specified object pattern.",
-	"main": "pattern-mock.js",
+	"main": "dist/pattern-mock.js",
 	"scripts": {
 		"minify": "terser dist/pattern-mock.js --mangle toplevel --source-map --output dist/pattern-mock.min.js",
 		"test": "jest"
