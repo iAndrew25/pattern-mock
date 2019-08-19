@@ -2,7 +2,9 @@
 Generates mock data based on a specified object pattern.
 
 ### Installing
-To use with node:
+
+You can install it using Node Package Manager (`npm`):
+
 ```
 $ npm install --save-dev pattern-mock
 ```
@@ -12,7 +14,9 @@ Then in the console:
 const patternMock = require('pattern-mock');
 ```
 
-To use directly in the browser:
+### Downloading
+The source is available for download from [GitHub](https://github.com/iAndy3/pattern-mock/blob/master/dist).
+
 ```
 <script src="path/to/yourCopyOf/pattern-mock.js"></script>
 ```
