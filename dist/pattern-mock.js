@@ -11,14 +11,16 @@
 }(this, function() {
 	'use strict';
 
+	const getNewArray = length => Array.from({length});
+
 	const getRandomNumber = ([min, max]) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-	const toTitleCase = string => string.split(' ').map(word => `${word[0].toUpperCase()}${word.substr(1).toLowerCase()}`).join(' ');
+	const toTitleCase = string => string.split(' ').map(word => word[0].toUpperCase() + word.substr(1).toLowerCase()).join(' ');
 
 	const getRandomColor = () => {
 		const letters = '0123456789ABCDEF';
 
-		return new Array(6).fill().reduce(total => total + letters[getRandomNumber([0, letters.length - 1])], '#');
+		return getNewArray(6).reduce(total => total + letters[getRandomNumber([0, letters.length - 1])], '#');
 	};
 
 	const getRandomUrl = prefix => {
@@ -44,7 +46,7 @@
 	const getRandomPhoneNumber = ({numbersInPhoneNumber}) => {
 		const numbersCount = getRandomNumber(numbersInPhoneNumber);
 
-		return new Array(numbersCount).fill().reduce(phoneNumber => phoneNumber + getRandomNumber([0, 9]), '');
+		return getNewArray(numbersCount).reduce(phoneNumber => phoneNumber + getRandomNumber([0, 9]), '');
 	};
 
 	const getRandomBoolean = () => Math.random() > 0.5;
@@ -58,7 +60,7 @@
 	const getRandomParagraph = config => {
 		const sentencesCount = getRandomNumber(config.sentencesInParagraph);
 
-		return new Array(sentencesCount).fill().reduce((paragraph, _, key) => {
+		return getNewArray(sentencesCount).reduce((paragraph, _, key) => {
 			if(key === 0) {
 				return getRandomSentence(config);
 			} else {
@@ -70,7 +72,7 @@
 	const getRandomSentence = config => {
 		const wordsCount = getRandomNumber(config.wordsInSentence);
 
-		return new Array(wordsCount).fill().reduce((sentence, _, key) => {
+		return getNewArray(wordsCount).reduce((sentence, _, key) => {
 			if(key === 0) {
 				return toTitleCase(getRandomWord(config));
 			} else if(key === wordsCount - 1) {
@@ -84,7 +86,7 @@
 	const getRandomName = config => {
 		const namesCount = getRandomNumber(config.wordsInName);
 
-		return new Array(namesCount).fill().map(_ => toTitleCase(getRandomWord(config))).join(' ');
+		return getNewArray(namesCount).map(_ => toTitleCase(getRandomWord(config))).join(' ');
 	};
 
 	const getRandomWord = ({lettersInWord}) => {
@@ -93,7 +95,7 @@
 
 		const wordLength = getRandomNumber(lettersInWord);
 
-		return new Array(wordLength).fill().reduce((word, _, key) => {
+		return getNewArray(wordLength).reduce((word, _, key) => {
 			if(key % 2 === 0) {
 				return word + consonants[getRandomNumber([0, consonants.length - 1])];
 			} else {
@@ -107,7 +109,7 @@
 		
 		const stringLength = getRandomNumber(lettersInString);
 
-		return new Array(stringLength).fill().reduce(string => string + letters[getRandomNumber([0, letters.length - 1])], '');
+		return getNewArray(stringLength).reduce(string => string + letters[getRandomNumber([0, letters.length - 1])], '');
 	};
 
 	const setValue = (type, config) => {
@@ -155,7 +157,7 @@
 		} else if(typeof property === 'string') {
 			return setValue(property, config);
 		} else if(Array.isArray(property)) {
-			return new Array(getRandomNumber(config.itemsInList)).fill().map(_ => dispatcher(property[0], config));
+			return getNewArray(getRandomNumber(config.itemsInList)).map(_ => dispatcher(property[0], config));
 		} else if(typeof property === 'object') {
 			return Object.entries(property).reduce((total, [key, value]) => ({
 				...total,
@@ -166,7 +168,7 @@
 		}
 	};
 
-	let defaultConfig = {
+	const DEFAULT_CONFIG = {
 		itemsInList: [3, 8],
 		numbersInPhoneNumber: [10, 13],
 		sentencesInParagraph: [3, 6],
@@ -178,7 +180,7 @@
 
 	return (pattern, config = {}) => {
 		if(typeof pattern === 'object') {
-			return dispatcher(pattern, {...defaultConfig, ...config});
+			return dispatcher(pattern, {...DEFAULT_CONFIG, ...config});
 		} else {
 			throw new Error(`Expected object, received '${typeof pattern}'.`);
 		}
