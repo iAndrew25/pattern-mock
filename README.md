@@ -15,14 +15,14 @@ const patternMock = require('pattern-mock');
 ```
 
 ### Downloading
-The source is available for download from [GitHub](https://github.com/iAndy3/pattern-mock/blob/master/dist).
+The source is available for download on [GitHub](https://github.com/iAndy3/pattern-mock/blob/master/dist).
 
-```
+```html
 <script src="path/to/yourCopyOf/pattern-mock.js"></script>
 ```
 
 Or the minified version:
-```
+```html
 <script src="path/to/yourCopyOf/pattern-mock.min.js"></script>
 ```
 ## Syntax
