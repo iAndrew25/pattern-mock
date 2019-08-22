@@ -157,7 +157,7 @@
 		} else if(typeof property === 'string') {
 			return setValue(property, config);
 		} else if(Array.isArray(property)) {
-			return getNewArray(getRandomNumber(config.itemsInList)).map(_ => dispatcher(property[0], config));
+			return getNewArray(getRandomNumber(property[1] || config.itemsInList)).map(_ => dispatcher(property[0], config));
 		} else if(typeof property === 'object') {
 			return Object.entries(property).reduce((total, [key, value]) => ({
 				...total,

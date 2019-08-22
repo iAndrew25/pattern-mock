@@ -32,8 +32,8 @@ patternMock(pattern, config[)
 
 ### Parameters
 * **pattern** - an object which specifies the structure of the result.
-* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`.
- 
+* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`, `lettersInString`.
+
 ## API
 
 ### Supported types
@@ -142,6 +142,37 @@ patternMock({
 // Object { magicNumber: 42 }
 ```
 
+### Nesting types
+When creating a list, all we need to do is to add a pattern as first argument such as:
+
+```javascript
+const pattern = {
+	names: ['NAME']
+};
+
+patternMock(pattern);
+/*
+{
+	names: [ "Vavobur Qeloc", "Dame Hogicebu Qosudet", "Lowo Welu" ]
+}
+*/
+```
+
+The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional element to the list, specifying the range.
+
+```javascript
+const pattern = {
+	names: ['NAME', [5, 7]]
+};
+
+patternMock(pattern);
+/*
+{
+	names: ["Bovezus Qaheba", "Xohu Bovub Dime", "Qegoruwi Nopoq", "Boyeta Wadag", "Divodoja Naxoqe Woyem", "Zagotay Yepapiso Jamu", "Dezacaz Jajigo"]
+}
+*/
+```
+
 ## Example of nested types
 
 ```javascript
@@ -154,7 +185,7 @@ const pattern = {
 	ingredients: [{
 		name: 'WORD',
 		quantity: 'CUSTOM_NUMBER_5-13'
-	}]
+	}, [2, 3]]
 };
 
 patternMock(pattern);

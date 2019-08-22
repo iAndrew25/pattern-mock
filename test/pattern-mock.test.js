@@ -151,6 +151,14 @@ describe('patternMock', () => {
 			});
 		});
 
+		test('should return list with 4 elements', () => {
+			const output = patternMock({
+				colors: ['COLOR', [4, 4]] 
+			});
+
+			expect(output.colors.length).toEqual(4);
+		});
+
 		test('should throw error', () => {
 			expect(() => patternMock({
 				callback: () => {}	
