@@ -83,10 +83,14 @@
 		}, '');
 	};
 
-	const getRandomName = config => {
-		const namesCount = getRandomNumber(config.wordsInName);
+	const getRandomFullName = config => {
+		const namesCount = getRandomNumber(config.wordsInFullName);
 
-		return getNewArray(namesCount).map(_ => toTitleCase(getRandomWord(config))).join(' ');
+		return getNewArray(namesCount).map(_ => getRandomName(config)).join(' ');
+	};
+
+	const getRandomName = config => {
+		return toTitleCase(getRandomWord(config));
 	};
 
 	const getRandomWord = ({lettersInWord}) => {
@@ -118,6 +122,8 @@
 				return getRandomWord(config);
 			case 'NAME':
 				return getRandomName(config);
+			case 'FULL_NAME':
+				return getRandomFullName(config);
 			case 'SENTENCE':
 				return getRandomSentence(config);
 			case 'PARAGRAPH':
@@ -145,9 +151,9 @@
 			default:
 				if(type.startsWith('CUSTOM_NUMBER')) {
 					return getRandomCustomInteger(type);
-				} else {
-					throw new Error(`Type '${type}' is not recognized.`);
 				}
+
+				return type;
 		}
 	};
 
@@ -164,7 +170,7 @@
 				[key]: dispatcher(value, config)
 			}), {});
 		} else {
-			throw new Error(`'${property}' is not allowed as value.`);
+			return property;
 		}
 	};
 
@@ -173,7 +179,7 @@
 		numbersInPhoneNumber: [10, 13],
 		sentencesInParagraph: [3, 6],
 		wordsInSentence: [5, 10],
-		wordsInName: [2, 4],
+		wordsInFullName: [2, 4],
 		lettersInWord: [4, 8],
 		lettersInString: [5, 10]
 	};

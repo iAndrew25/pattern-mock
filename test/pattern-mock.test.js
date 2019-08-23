@@ -21,6 +21,14 @@ describe('patternMock', () => {
 			expect(typeof output.name).toEqual('string');
 		});
 
+		test('type `FULL_NAME` should return a string', () => {
+			const output = patternMock({
+				fullName: 'FULL_NAME'
+			});
+
+			expect(typeof output.fullName).toEqual('string');
+		});
+
 		test('type `SENTENCE` should return a string', () => {
 			const output = patternMock({
 				description: 'SENTENCE'
@@ -117,10 +125,20 @@ describe('patternMock', () => {
 			expect(output.website.startsWith('http://')).toEqual(true);
 		});
 
-		test('type `RANDOM_TYPE` should throw an error', () => {
-			expect(() => patternMock({
-				randomType: 'RANDOM_TYPE'
-			})).toThrow();
+		test('should return fixed value', () => {
+			const output = patternMock({
+				null: null,
+				undefined: undefined,
+				number: 42,
+				string: 'GOLDEN_STAG',
+				function: jest.fn()
+			}); 
+
+			expect(output.null).toEqual(null);
+			expect(output.undefined).toEqual(undefined);
+			expect(output.number).toEqual(42);
+			expect(output.string).toEqual('GOLDEN_STAG');
+			expect(output.function).toEqual(expect.any(Function));
 		});
 	});
 
@@ -160,10 +178,6 @@ describe('patternMock', () => {
 		});
 
 		test('should throw error', () => {
-			expect(() => patternMock({
-				callback: () => {}	
-			})).toThrow();
-
 			expect(() => patternMock('random-string')).toThrow();
 		});
 	});

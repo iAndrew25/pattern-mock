@@ -32,7 +32,7 @@ patternMock(pattern, config[)
 
 ### Parameters
 * **pattern** - an object which specifies the structure of the result.
-* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInName`, `lettersInWord`, `lettersInString`.
+* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInFullName`, `lettersInWord`, `lettersInString`.
 
 ## API
 
@@ -45,13 +45,21 @@ patternMock({
 
 // Object { place: "jezug" }
 ```
+* **FULL_NAME**
+```javascript
+patternMock({
+	name: 'FULL_NAME'
+}); 
+
+// Object { name: "Xolapu Moreni Rupuhixe" }
+```
 * **NAME**
 ```javascript
 patternMock({
 	name: 'NAME'
 }); 
 
-// Object { name: "Xolapu Moreni Rupuhixe" }
+// Object { name: "Dunaf" }
 ```
 * **SENTENCE**
 ```javascript
@@ -147,7 +155,7 @@ When creating a list, all we need to do is to add a pattern as first argument su
 
 ```javascript
 const pattern = {
-	names: ['NAME']
+	names: ['FULL_NAME']
 };
 
 patternMock(pattern);
@@ -162,7 +170,7 @@ The range of the items in list is passed in the config object. We are also able 
 
 ```javascript
 const pattern = {
-	names: ['NAME', [5, 7]]
+	names: ['FULL_NAME', [5, 7]]
 };
 
 patternMock(pattern);
@@ -178,7 +186,7 @@ patternMock(pattern);
 ```javascript
 const pattern = {
 	id: 'NUMBER',
-	name: 'NAME',
+	name: 'FULL_NAME',
 	description: 'SENTENCE',
 	price: 'CUSTOM_NUMBER_10-30',
 	expirationDate: 'DATE',
