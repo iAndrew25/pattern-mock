@@ -27,7 +27,7 @@ Or the minified version:
 ```
 ## Syntax
 ```javascript
-patternMock(pattern, config[)
+patternMock(pattern, config[);
 ```
 
 ### Parameters
@@ -43,7 +43,9 @@ patternMock({
 	place: 'WORD'
 }); 
 
-// Object { place: "jezug" }
+// { 
+// 	place: "jezug" 
+// }
 ```
 * **FULL_NAME**
 ```javascript
@@ -51,7 +53,9 @@ patternMock({
 	name: 'FULL_NAME'
 }); 
 
-// Object { name: "Xolapu Moreni Rupuhixe" }
+// { 
+// 	name: "Xolapu Moreni Rupuhixe" 
+// }
 ```
 * **NAME**
 ```javascript
@@ -59,7 +63,9 @@ patternMock({
 	name: 'NAME'
 }); 
 
-// Object { name: "Dunaf" }
+// {
+// 	name: "Dunaf" 
+// }
 ```
 * **SENTENCE**
 ```javascript
@@ -67,7 +73,9 @@ patternMock({
 	description: 'SENTENCE'
 }); 
 
-// Object { description: "Hivilonu jowux wogo zilaxexa hijo vocefe fuzar." }
+// {
+// 	description: "Hivilonu jowux wogo zilaxexa hijo vocefe fuzar."
+// }
 ```
 * **PARAGRAPH**
 ```javascript
@@ -75,7 +83,9 @@ patternMock({
 	article: 'PARAGRAPH'
 });
 
-// Object { article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu." }
+// {
+// 	article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu."
+// }
 ```
 * **STRING**
 ```javascript
@@ -83,7 +93,9 @@ patternMock({
 	randomId: 'STRING'
 });
 
-// Object { randomId: "co5dd6bGs" }
+// {
+// 	randomId: "co5dd6bGs"
+// }
 ```
 * **URL**
 ```javascript
@@ -91,7 +103,9 @@ patternMock({
 	website: 'URL'
 });
 
-// Object { website: "http://zat.wa" }
+// {
+// 	website: "http://zat.wa"
+// }
 ```
 * **EMAIL**
 ```javascript
@@ -99,7 +113,9 @@ patternMock({
 	email: 'EMAIL'
 });
 
-// Object { email: "zera@cuje.vi" }
+// {
+// 	email: "zera@cuje.vi"
+// }
 ```
 * **COLOR**
 ```javascript
@@ -107,7 +123,9 @@ patternMock({
 	color: 'COLOR'
 });
 
-// Object { color: "#747978" }
+// {
+// 	color: "#747978"
+// }
 ```
 * **BOOLEAN**
 ```javascript
@@ -115,7 +133,9 @@ patternMock({
 	isOffline: 'BOOLEAN'
 }); 
 
-// Object { isOffline: true }
+// {
+// 	isOffline: true
+// }
 ```
 * **DATE**
 ```javascript
@@ -123,7 +143,9 @@ patternMock({
 	meetingDate: 'DATE'
 }); 
 
-// Object { meetingDate: Date Tue Dec 03 1974 22:03:35 GMT+0200 (Eastern European Standard Time) }
+// {
+// 	meetingDate: Date Tue Dec 03 1974 22:03:35 GMT+0200 (Eastern European Standard Time)
+// }
 ```
 * **NUMBER**
 ```javascript
@@ -131,7 +153,9 @@ patternMock({
 	id: 'NUMBER'
 }); 
 
-// Object { id: 7111080744192283 }
+// {
+// 	id: 7111080744192283
+// }
 ```
 * **COUNTER**
 ```javascript
@@ -149,7 +173,9 @@ patternMock({
 	phoneNumber: 'PHONE_NUMBER'
 }); 
 
-// Object { phoneNumber: "3346807899" }
+// {
+// 	phoneNumber: "3346807899"
+// }
 ```
 * **CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>**
 ```javascript
@@ -157,18 +183,18 @@ patternMock({
 	magicNumber: 'CUSTOM_NUMBER_23-167'
 }); 
 
-// Object { magicNumber: 42 }
+// { 
+// 	magicNumber: 42
+// }
 ```
 
 ### Nesting types
 When creating a list, all we need to do is to add a pattern as first argument such as:
 
 ```javascript
-const pattern = {
+patternMock({
 	names: ['FULL_NAME']
-};
-
-patternMock(pattern);
+});
 
 // {
 // 	names: [ "Vavobur Qeloc", "Dame Hogicebu Qosudet", "Lowo Welu" ]
@@ -178,11 +204,10 @@ patternMock(pattern);
 The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional element to the list, specifying the range.
 
 ```javascript
-const pattern = {
+patternMock({
 	names: ['FULL_NAME', [5, 7]]
-};
+});
 
-patternMock(pattern);
 // {
 // 	names: ["Bovezus Qaheba", "Xohu Bovub Dime", "Qegoruwi Nopoq", "Boyeta Wadag", "Divodoja Naxoqe Woyem", "Zagotay Yepapiso Jamu", "Dezacaz Jajigo"]
 // }
@@ -191,7 +216,7 @@ patternMock(pattern);
 ## Example of nested types
 
 ```javascript
-const pattern = {
+patternMock({
 	id: 'NUMBER',
 	name: 'FULL_NAME',
 	description: 'SENTENCE',
@@ -202,9 +227,8 @@ const pattern = {
 		name: 'WORD',
 		quantity: 'CUSTOM_NUMBER_5-13'
 	}, [2, 3]]
-};
+});
 
-patternMock(pattern);
 // {
 // 	id: 677404510061448,
 // 	name: 'Geqi Tacariwi Pitaheba Pala',
