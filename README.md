@@ -36,8 +36,24 @@ patternMock(pattern, config[);
 
 ## API
 
+* [WORD](#WORD)
+* [FULL_NAME](#FULL_NAME)
+* [NAME](#NAME)
+* [SENTENCE](#SENTENCE)
+* [PARAGRAPH](#PARAGRAPH)
+* [STRING](#STRING)
+* [URL](#URL)
+* [EMAIL](#EMAIL)
+* [COLOR](#COLOR)
+* [BOOLEAN](#BOOLEAN)
+* [DATE](#DATE)
+* [NUMBER](#NUMBER)
+* [COUNTER](#COUNTER)
+* [PHONE_NUMBER](#PHONE_NUMBER)
+* [CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>](#CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>)
+
 ### Supported types
-* **WORD**
+#### WORD
 ```javascript
 patternMock({
 	place: 'WORD'
@@ -47,7 +63,7 @@ patternMock({
 // 	place: "jezug" 
 // }
 ```
-* **FULL_NAME**
+#### FULL_NAME
 ```javascript
 patternMock({
 	name: 'FULL_NAME'
@@ -57,7 +73,7 @@ patternMock({
 // 	name: "Xolapu Moreni Rupuhixe" 
 // }
 ```
-* **NAME**
+#### NAME
 ```javascript
 patternMock({
 	name: 'NAME'
@@ -67,7 +83,7 @@ patternMock({
 // 	name: "Dunaf" 
 // }
 ```
-* **SENTENCE**
+#### SENTENCE
 ```javascript
 patternMock({
 	description: 'SENTENCE'
@@ -77,7 +93,7 @@ patternMock({
 // 	description: "Hivilonu jowux wogo zilaxexa hijo vocefe fuzar."
 // }
 ```
-* **PARAGRAPH**
+#### PARAGRAPH
 ```javascript
 patternMock({
 	article: 'PARAGRAPH'
@@ -87,7 +103,7 @@ patternMock({
 // 	article: "Hudehifu qatu hanel peboviw nepuxut miges vibocu zatipe retuq. Bihu safa juzu tufuho bojap rimapo hovuqasi faha vezu. Dicewama yivusuhu valuy qunowaci jixun. Xoyuvo befo rorer tudo qabac butap pezu tebawup cedow. Puvasar tote xeqer cuxeduzo wico zequrefi lirabad periniw. Jamopofe cucojuh menu cawete denipivu."
 // }
 ```
-* **STRING**
+#### STRING
 ```javascript
 patternMock({
 	randomId: 'STRING'
@@ -97,7 +113,7 @@ patternMock({
 // 	randomId: "co5dd6bGs"
 // }
 ```
-* **URL**
+#### URL
 ```javascript
 patternMock({
 	website: 'URL'
@@ -107,7 +123,7 @@ patternMock({
 // 	website: "http://zat.wa"
 // }
 ```
-* **EMAIL**
+#### EMAIL
 ```javascript
 patternMock({
 	email: 'EMAIL'
@@ -117,7 +133,7 @@ patternMock({
 // 	email: "zera@cuje.vi"
 // }
 ```
-* **COLOR**
+#### COLOR
 ```javascript
 patternMock({
 	color: 'COLOR'
@@ -127,7 +143,7 @@ patternMock({
 // 	color: "#747978"
 // }
 ```
-* **BOOLEAN**
+#### BOOLEAN
 ```javascript
 patternMock({
 	isOffline: 'BOOLEAN'
@@ -137,7 +153,7 @@ patternMock({
 // 	isOffline: true
 // }
 ```
-* **DATE**
+#### DATE
 ```javascript
 patternMock({
 	meetingDate: 'DATE'
@@ -147,7 +163,7 @@ patternMock({
 // 	meetingDate: Date Tue Dec 03 1974 22:03:35 GMT+0200 (Eastern European Standard Time)
 // }
 ```
-* **NUMBER**
+#### NUMBER
 ```javascript
 patternMock({
 	id: 'NUMBER'
@@ -157,7 +173,7 @@ patternMock({
 // 	id: 7111080744192283
 // }
 ```
-* **COUNTER**
+#### COUNTER
 ```javascript
 patternMock({
 	id: ['COUNTER']
@@ -167,7 +183,7 @@ patternMock({
 // 	id: [ 0, 1, 2, 3, 4 ]
 // }
 ```
-* **PHONE_NUMBER**
+#### PHONE_NUMBER
 ```javascript
 patternMock({
 	phoneNumber: 'PHONE_NUMBER'
@@ -177,7 +193,7 @@ patternMock({
 // 	phoneNumber: "3346807899"
 // }
 ```
-* **CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>**
+#### CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>
 ```javascript
 patternMock({
 	magicNumber: 'CUSTOM_NUMBER_23-167'
