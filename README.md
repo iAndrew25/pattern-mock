@@ -1,7 +1,34 @@
 # Pattern mock · [![Build Status](https://travis-ci.org/iAndy3/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndy3/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
 Generates mock data based on a specified object pattern.
 
-### Installing
+## Content
+
+* [Installing](#Installing)
+* [Downloading](#Downloading)
+* [Syntax](#Syntax)
+  * [Parameters](#Parameters)
+* [API](#API)
+  * [Supported types](#SupportedTypes)
+    * [WORD](#WORD)
+    * [FULL_NAME](#FULL_NAME)
+    * [NAME](#NAME)
+    * [SENTENCE](#SENTENCE)
+    * [PARAGRAPH](#PARAGRAPH)
+    * [STRING](#STRING)
+    * [URL](#URL)
+    * [EMAIL](#EMAIL)
+    * [COLOR](#COLOR)
+    * [BOOLEAN](#BOOLEAN)
+    * [DATE](#DATE)
+    * [NUMBER](#NUMBER)
+    * [COUNTER](#COUNTER)
+    * [PHONE_NUMBER](#PHONE_NUMBER)
+    * [CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>](#CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>)
+  * [Nesting types](#NestingTypes)
+* [Authors](#Authors)
+* [License](#License)
+
+## Installing
 
 You can install it using Node Package Manager (`npm`):
 
@@ -14,7 +41,7 @@ Then in the console:
 const patternMock = require('pattern-mock');
 ```
 
-### Downloading
+## Downloading
 The source is available for download on [GitHub](https://github.com/iAndy3/pattern-mock/blob/master/dist).
 
 ```html
@@ -35,23 +62,6 @@ patternMock(pattern, config[);
 * **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInFullName`, `lettersInWord`, `lettersInString`.
 
 ## API
-
-* [WORD](#WORD)
-* [FULL_NAME](#FULL_NAME)
-* [NAME](#NAME)
-* [SENTENCE](#SENTENCE)
-* [PARAGRAPH](#PARAGRAPH)
-* [STRING](#STRING)
-* [URL](#URL)
-* [EMAIL](#EMAIL)
-* [COLOR](#COLOR)
-* [BOOLEAN](#BOOLEAN)
-* [DATE](#DATE)
-* [NUMBER](#NUMBER)
-* [COUNTER](#COUNTER)
-* [PHONE_NUMBER](#PHONE_NUMBER)
-* [CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>](#CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>)
-
 ### Supported types
 #### WORD
 ```javascript
@@ -229,7 +239,7 @@ patternMock({
 // }
 ```
 
-## Example of nested types
+Nesting more types:
 
 ```javascript
 patternMock({
