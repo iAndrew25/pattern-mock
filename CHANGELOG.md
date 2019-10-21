@@ -1,5 +1,9 @@
 # Changelog
-## [1.3.13] - 2019-10-21
+## [1.4.0] - 2019-10-21
+### Added
+- 'COUNTER' type
+
+## [1.3.1] - 2019-10-21
 ### Fixed
 - issue when passing an array with more items, it would throw an error.
 

@@ -133,6 +133,16 @@ patternMock({
 
 // Object { id: 7111080744192283 }
 ```
+* **COUNTER**
+```javascript
+patternMock({
+	id: ['COUNTER']
+}); 
+
+// {
+// 	id: [ 0, 1, 2, 3, 4 ]
+// }
+```
 * **PHONE_NUMBER**
 ```javascript
 patternMock({
@@ -159,11 +169,10 @@ const pattern = {
 };
 
 patternMock(pattern);
-/*
-{
-	names: [ "Vavobur Qeloc", "Dame Hogicebu Qosudet", "Lowo Welu" ]
-}
-*/
+
+// {
+// 	names: [ "Vavobur Qeloc", "Dame Hogicebu Qosudet", "Lowo Welu" ]
+// }
 ```
 
 The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional element to the list, specifying the range.
@@ -174,11 +183,9 @@ const pattern = {
 };
 
 patternMock(pattern);
-/*
-{
-	names: ["Bovezus Qaheba", "Xohu Bovub Dime", "Qegoruwi Nopoq", "Boyeta Wadag", "Divodoja Naxoqe Woyem", "Zagotay Yepapiso Jamu", "Dezacaz Jajigo"]
-}
-*/
+// {
+// 	names: ["Bovezus Qaheba", "Xohu Bovub Dime", "Qegoruwi Nopoq", "Boyeta Wadag", "Divodoja Naxoqe Woyem", "Zagotay Yepapiso Jamu", "Dezacaz Jajigo"]
+// }
 ```
 
 ## Example of nested types
@@ -191,28 +198,29 @@ const pattern = {
 	price: 'CUSTOM_NUMBER_10-30',
 	expirationDate: 'DATE',
 	ingredients: [{
+		id: 'COUNTER',
 		name: 'WORD',
 		quantity: 'CUSTOM_NUMBER_5-13'
 	}, [2, 3]]
 };
 
 patternMock(pattern);
-/*
-{
-	id: 677404510061448,
-	name: 'Geqi Tacariwi Pitaheba Pala',
-	description: 'Turar suvete wofah xuvome hofufi laboma nihigilu teqiz.',
-	price: 23,
-	expirationDate: '1958-04-23T02:48:28.493Z',
-	ingredients: [{
-		name: 'bigohu',
-		quantity: 6
-	}, {
-		name: 'ceboxodi',
-		quantity: 12
-	}]
-}
-*/
+// {
+// 	id: 677404510061448,
+// 	name: 'Geqi Tacariwi Pitaheba Pala',
+// 	description: 'Turar suvete wofah xuvome hofufi laboma nihigilu teqiz.',
+// 	price: 23,
+// 	expirationDate: '1958-04-23T02:48:28.493Z',
+// 	ingredients: [{
+// 		id: 0,
+// 		name: 'bigohu',
+// 		quantity: 6
+// 	}, {
+// 		id: 1,
+// 		name: 'ceboxodi',
+// 		quantity: 12
+// 	}]
+// }
 ```
 
 ## Authors

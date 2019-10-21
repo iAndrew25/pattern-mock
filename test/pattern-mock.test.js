@@ -125,6 +125,14 @@ describe('patternMock', () => {
 			expect(output.website.startsWith('http://')).toEqual(true);
 		});
 
+		test('type `COUNTER` should return incremented values', () => {
+			const output = patternMock({
+				id: ['COUNTER', [7, 7]]
+			});
+
+			expect(output.id).toEqual([0, 1, 2, 3, 4, 5, 6]);
+		});
+
 		test('should return fixed value', () => {
 			const output = patternMock({
 				null: null,

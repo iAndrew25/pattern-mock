@@ -10,7 +10,7 @@
 	}
 }(this, function() {
 	'use strict';
-
+	
 	const getNewArray = length => Array.from({length});
 
 	const getRandomNumber = ([min, max]) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -116,7 +116,9 @@
 		return getNewArray(stringLength).reduce(string => string + letters[getRandomNumber([0, letters.length - 1])], '');
 	};
 
-	const setValue = (type, config) => {
+	const getCounter = (itemIndex, {counterStart}) => itemIndex + counterStart;
+
+	const setValue = (type, config, itemIndex) => {
 		switch(type) {
 			case 'WORD':
 				return getRandomWord(config);
@@ -143,8 +145,8 @@
 			case 'DATE':
 				return getRandomDate();
 
-			// case 'INCREMENTING_ID':
-			// 	return getIncrementingId();
+			case 'COUNTER':
+				return getCounter(itemIndex, config);
 			case 'NUMBER':
 				return getRandomInteger();
 			case 'PHONE_NUMBER':
@@ -159,21 +161,21 @@
 		}
 	};
 
-	const dispatcher = (property, config) => {
-		if(property === null) {
+	const dispatcher = (type, config, itemIndex) => {
+		if(type === null) {
 			return null;
-		} else if(typeof property === 'string') {
-			return setValue(property, config);
-		} else if(Array.isArray(property)) {
-			const range = (Array.isArray(property[1]) && property[1].length === 2) ? property[1] : config.itemsInList;
-			return getNewArray(getRandomNumber(range)).map(_ => dispatcher(property[0], config));
-		} else if(typeof property === 'object') {
-			return Object.entries(property).reduce((total, [key, value]) => ({
+		} else if(typeof type === 'string') {
+			return setValue(type, config, itemIndex);
+		} else if(Array.isArray(type)) {
+			const range = (Array.isArray(type[1]) && type[1].length === 2) ? type[1] : config.itemsInList;
+			return getNewArray(getRandomNumber(range)).map((_, index) => dispatcher(type[0], config, index));
+		} else if(typeof type === 'object') {
+			return Object.entries(type).reduce((total, [key, value]) => ({
 				...total,
-				[key]: dispatcher(value, config)
+				[key]: dispatcher(value, config, itemIndex)
 			}), {});
 		} else {
-			return property;
+			return type;
 		}
 	};
 
@@ -184,7 +186,8 @@
 		wordsInSentence: [5, 10],
 		wordsInFullName: [2, 4],
 		lettersInWord: [4, 8],
-		lettersInString: [5, 10]
+		lettersInString: [5, 10],
+		counterStart: 0
 	};
 
 	return (pattern, config = {}) => {
