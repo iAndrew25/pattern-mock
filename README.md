@@ -8,7 +8,7 @@ Generates mock data based on a specified object pattern.
 * [Syntax](#Syntax)
   * [Parameters](#Parameters)
 * [API](#API)
-  * [Supported types](#SupportedTypes)
+  * [Supported types](#Supported-Types)
     * [WORD](#WORD)
     * [FULL_NAME](#FULL_NAME)
     * [NAME](#NAME)
@@ -24,7 +24,7 @@ Generates mock data based on a specified object pattern.
     * [COUNTER](#COUNTER)
     * [PHONE_NUMBER](#PHONE_NUMBER)
     * [CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>](#CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>)
-  * [Nesting types](#NestingTypes)
+  * [Nesting types](#Nesting-Types)
 * [Authors](#Authors)
 * [License](#License)
 
