@@ -143,6 +143,8 @@
 			case 'DATE':
 				return getRandomDate();
 
+			// case 'INCREMENTING_ID':
+			// 	return getIncrementingId();
 			case 'NUMBER':
 				return getRandomInteger();
 			case 'PHONE_NUMBER':
@@ -163,7 +165,8 @@
 		} else if(typeof property === 'string') {
 			return setValue(property, config);
 		} else if(Array.isArray(property)) {
-			return getNewArray(getRandomNumber(property[1] || config.itemsInList)).map(_ => dispatcher(property[0], config));
+			const range = (Array.isArray(property[1]) && property[1].length === 2) ? property[1] : config.itemsInList;
+			return getNewArray(getRandomNumber(range)).map(_ => dispatcher(property[0], config));
 		} else if(typeof property === 'object') {
 			return Object.entries(property).reduce((total, [key, value]) => ({
 				...total,

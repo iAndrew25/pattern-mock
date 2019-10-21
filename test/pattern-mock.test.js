@@ -169,6 +169,22 @@ describe('patternMock', () => {
 			});
 		});
 
+		test('should ignore other items in list', () => {
+			const output = patternMock({
+				items: [{
+					name: 'NAME'
+				}, {
+					fullName: 'FULL_NAME'
+				}]
+			});
+
+			expect(output.items).toEqual(expect.arrayContaining([
+				expect.objectContaining({
+					name: expect.any(String)
+				})
+			]));
+		});
+
 		test('should return list with 4 elements', () => {
 			const output = patternMock({
 				colors: ['COLOR', [4, 4]] 

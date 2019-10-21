@@ -1,4 +1,8 @@
 # Changelog
+## [1.3.13] - 2019-10-21
+### Fixed
+- issue when passing an array with more items, it would throw an error.
+
 ## [1.3.0] - 2019-08-23
 ### Added
 - you won't get an error anymore whenever you're using a property which is not a type, instead it will return it as it is, letting the user to display static values.
