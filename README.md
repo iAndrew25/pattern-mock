@@ -59,7 +59,16 @@ patternMock(pattern, config[);
 
 ### Parameters
 * **pattern** - an object which specifies the structure of the result.
-* **config** - a configuration object which sets ranges of numbers for generating random `itemsInList`, `numbersInPhoneNumber`, `sentencesInParagraph`, `wordsInSentence`, `wordsInFullName`, `lettersInWord`, `lettersInString`.
+* **config** - a configuration object which sets configuration and ranges of numbers for generating random data:
+	* `itemsInList` - default `[3, 8]`
+	* `numbersInPhoneNumber` - default `[10, 10]`
+	* `sentencesInParagraph` - default `[3, 6]`
+	* `wordsInSentence` - default `[5, 10]`
+	* `wordsInFullName` - default `[2, 4]`
+	* `lettersInWord` - default `[4, 8]`
+	* `lettersInString` - default `[5, 10]`
+	* `spaceIndexInPhoneNumber` - default `[4, 6, 8]`
+	* `counterStart` - default `0`
 
 ## API
 ### Supported types
@@ -200,7 +209,7 @@ patternMock({
 }); 
 
 // {
-// 	phoneNumber: "3346807899"
+// 	phoneNumber: "3346 80 78 99"
 // }
 ```
 #### CUSTOM_NUMBER_<MIN_NUMBER>-<MAX_NUMBER>
@@ -227,11 +236,13 @@ patternMock({
 // }
 ```
 
-The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional element to the list, specifying the range.
+The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional object to the list, which accepts one of the following properties:
+	* length - number - for setting a fixed length of the list.
+	* range - list of two numbers - specifying a minimum and maximum length for the list.
 
 ```javascript
 patternMock({
-	names: ['FULL_NAME', [5, 7]]
+	names: ['FULL_NAME', {range: [5, 7]}]
 });
 
 // {
@@ -252,7 +263,9 @@ patternMock({
 		id: 'COUNTER',
 		name: 'WORD',
 		quantity: 'CUSTOM_NUMBER_5-13'
-	}, [2, 3]]
+	}, {
+		length: 2
+	}]
 });
 
 // {
