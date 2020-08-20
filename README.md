@@ -237,9 +237,8 @@ patternMock({
 ```
 
 The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional object to the list, which accepts one of the following properties:
-
-	* length - number - for setting a fixed length of the list.
-	* range - list of two numbers - specifying a minimum and maximum length for the list.
+- length - number - for setting a fixed length of the list.
+- range - list of two numbers - specifying a minimum and maximum length for the list.
 
 ```javascript
 patternMock({
