@@ -1,4 +1,4 @@
-# Pattern mock · [![Build Status](https://travis-ci.org/iAndrew25/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndrew25/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndrew25/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
+# Pattern mock · [![Build Status](https://travis-ci.org/iAndrew25/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndrew25/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndrew25/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Latest%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
 Generates mock data based on a specified object pattern.
 
 ## Content
@@ -237,6 +237,7 @@ patternMock({
 ```
 
 The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional object to the list, which accepts one of the following properties:
+
 	* length - number - for setting a fixed length of the list.
 	* range - list of two numbers - specifying a minimum and maximum length for the list.
 
