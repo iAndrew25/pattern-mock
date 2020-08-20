@@ -87,6 +87,10 @@ describe('patternMock', () => {
 			}); 
 
 			expect(typeof output.phoneNumber).toEqual('string');
+			console.log("output.phoneNumber", output.phoneNumber);
+			expect(output.phoneNumber[4]).toEqual(' ');
+			expect(output.phoneNumber[7]).toEqual(' ');
+			expect(output.phoneNumber[10]).toEqual(' ');
 		});
 
 		test('type `EMAIL` should return a string', () => {
@@ -127,7 +131,7 @@ describe('patternMock', () => {
 
 		test('type `COUNTER` should return incremented values', () => {
 			const output = patternMock({
-				id: ['COUNTER', [7, 7]]
+				id: ['COUNTER', {length: 7}]
 			});
 
 			expect(output.id).toEqual([0, 1, 2, 3, 4, 5, 6]);
@@ -195,7 +199,7 @@ describe('patternMock', () => {
 
 		test('should return list with 4 elements', () => {
 			const output = patternMock({
-				colors: ['COLOR', [4, 4]] 
+				colors: ['COLOR', {length: 4}] 
 			});
 
 			expect(output.colors.length).toEqual(4);
