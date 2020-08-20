@@ -265,8 +265,8 @@
 		if(typeof type === 'string') return setValue(type, config, itemIndex);
 
 		if(Array.isArray(type)) {
-			const {length, minLength = 1, maxLength} = type[1] || {};
-			const arrayLength = length ? length : maxLength ? getRandomNumber([minLength, maxLength]) : config.itemsInList;
+			const {length, range} = type[1] || {};
+			const arrayLength = length || getRandomNumber(range || config.itemsInList);
 
 			return getNewArray(arrayLength).map((_, index) => dispatcher(type[0], config, index));
 		}
@@ -277,7 +277,7 @@
 				[key]: dispatcher(value, config, itemIndex)
 			}), {});
 		}
-		
+
 		return type;
 	};
 
