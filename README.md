@@ -1,4 +1,4 @@
-# Pattern mock · [![Build Status](https://travis-ci.org/iAndy3/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndy3/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndy3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
+# Pattern mock · [![Build Status](https://travis-ci.org/iAndrew3/pattern-mock.svg?branch=master)](https://travis-ci.org/iAndrew3/pattern-mock) ![GitHub](https://img.shields.io/github/license/iAndrew3/pattern-mock?label=License) ![npm](https://img.shields.io/npm/v/pattern-mock?label=Stable%20version) ![npm](https://img.shields.io/npm/dt/pattern-mock?label=Downloads) 
 Generates mock data based on a specified object pattern.
 
 ## Content
@@ -42,7 +42,7 @@ const patternMock = require('pattern-mock');
 ```
 
 ## Downloading
-The source is available for download on [GitHub](https://github.com/iAndy3/pattern-mock/blob/master/dist).
+The source is available for download on [GitHub](https://github.com/iAndrew3/pattern-mock/blob/master/dist).
 
 ```html
 <script src="path/to/yourCopyOf/pattern-mock.js"></script>
@@ -274,9 +274,9 @@ patternMock({
 ```
 
 ## Authors
-* **Andrew** - [iAndy3](https://github.com/iAndy3)
+* **Andrew** - [iAndrew3](https://github.com/iAndrew3)
 
-See also the list of [contributors](https://github.com/iAndy3/pattern-mock/graphs/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/iAndrew3/pattern-mock/graphs/contributors) who participated in this project.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
