@@ -67,7 +67,7 @@ const getValue = ({type, config, itemIndex}) => {
 const dispatcher = ({type, config, itemIndex}) => {
 	if(type === null) return null;
 	
-	const {decorate, decorateEach, length, range, pickOne} = config;
+	const {decorate, decorateEach, length, range, shouldPickOne} = config;
 
 	if(typeof type === 'string') {
 		const value = getValue({type, config, itemIndex});
@@ -78,7 +78,7 @@ const dispatcher = ({type, config, itemIndex}) => {
 	if(Array.isArray(type)) {
 		const listLength = type.length;
 
-		if(pickOne) {
+		if(shouldPickOne) {
 			return type[getNumber([0, listLength - 1])]
 		}
 

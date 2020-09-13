@@ -265,7 +265,7 @@ describe('patternMock', () => {
 				items: {
 					__type__: ['One', 'Two', 'Three'],
 					__config__: {
-						pickOne: true
+						shouldPickOne: true
 					}
 				}
 			});
