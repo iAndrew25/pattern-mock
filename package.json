@@ -2,9 +2,9 @@
 	"name": "pattern-mock",
 	"version": "2.0.0",
 	"description": "Generates mock data based on a specified object pattern.",
-	"main": "dist/pattern-mock.js",
+	"main": "dist/pattern-mock.min.js",
 	"scripts": {
-		"minify": "terser dist/pattern-mock.js --mangle toplevel --source-map --output dist/pattern-mock.min.js",
+		"minify": "rollup -c",
 		"test": "jest"
 	},
 	"repository": {
@@ -24,11 +24,13 @@
 		"url": "https://github.com/iAndy3/pattern-mock/issues"
 	},
 	"files": [
-		"dist/pattern-mock.js"
+		"dist/pattern-mock.min.js"
 	],
 	"homepage": "https://github.com/iAndy3/pattern-mock#readme",
 	"devDependencies": {
+		"@rollup/plugin-commonjs": "^15.0.0",
 		"jest": "^24.8.0",
-		"terser": "4.1.3"
+		"rollup": "^2.26.11",
+		"rollup-plugin-terser": "^7.0.2"
 	}
 }

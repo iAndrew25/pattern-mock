@@ -1,4 +1,4 @@
-const patternMock = require('../dist/pattern-mock');
+const patternMock = require('../src');
 
 
 describe('patternMock', () => {
@@ -87,7 +87,7 @@ describe('patternMock', () => {
 			}); 
 
 			expect(typeof output.phoneNumber).toEqual('string');
-			console.log("output.phoneNumber", output.phoneNumber);
+
 			expect(output.phoneNumber[4]).toEqual(' ');
 			expect(output.phoneNumber[7]).toEqual(' ');
 			expect(output.phoneNumber[10]).toEqual(' ');
@@ -131,7 +131,12 @@ describe('patternMock', () => {
 
 		test('type `COUNTER` should return incremented values', () => {
 			const output = patternMock({
-				id: ['COUNTER', {length: 7}]
+				id: {
+					__type__: ['COUNTER'],
+					__config__: {
+						length: 7
+					}
+				}
 			});
 
 			expect(output.id).toEqual([0, 1, 2, 3, 4, 5, 6]);
@@ -181,25 +186,101 @@ describe('patternMock', () => {
 			});
 		});
 
-		test('should ignore other items in list', () => {
+		test('should return input values', () => {
+			const input = [{
+				name: 'NAMES'
+			}, {
+				fullName: 'FULL_NAMES'
+			}];
+
 			const output = patternMock({
-				items: [{
-					name: 'NAME'
-				}, {
-					fullName: 'FULL_NAME'
-				}]
+				items: input
 			});
 
-			expect(output.items).toEqual(expect.arrayContaining([
-				expect.objectContaining({
-					name: expect.any(String)
-				})
-			]));
+			expect(output.items).toEqual(input);
+		});
+
+		test('should call `decorateEach` for each item', () => {
+			const decorateEach = jest.fn();
+			const called = 5;
+
+			const output = patternMock({
+				emails: {
+					__type__: ['EMAIL'],
+					__config__: {
+						decorateEach,
+						length: called
+					}
+				}
+			});
+
+			expect(decorateEach).toBeCalledTimes(called);
+		});
+
+		test('should concatenate string to name', () => {
+			const firstName = 'Marco';
+			const lastName = 'Polo';
+
+			const output = patternMock({
+				name: {
+					__type__: firstName,
+					__config__: {
+						decorate: name => `${name} ${lastName}`
+					}
+				}
+			});
+
+			expect(output.name).toEqual(`${firstName} ${lastName}`);
+		});
+
+		test('should add new item to list', () => {
+			const list = ['one', 'two'];
+
+			const output = patternMock({
+				numbers: {
+					__type__: list,
+					__config__: {
+						decorate: l => [...l, 'three']
+					}
+				}
+			});
+
+			expect(output.numbers).toEqual([...list, 'three']);
+		});
+
+		test('should return a counter starting from default value', () => {
+			const output = patternMock({
+				counter: {
+					__type__: 'COUNTER'
+				}
+			});
+
+			expect(output.counter).toEqual(0);
+		});
+
+		test('should pick a value from a list', () => {
+			const input = ['One', 'Two', 'Three'];
+
+			const output = patternMock({
+				items: {
+					__type__: ['One', 'Two', 'Three'],
+					__config__: {
+						pickOne: true
+					}
+				}
+			});
+
+			expect(input.includes(output.items)).toBe(true);
 		});
 
 		test('should return list with 4 elements', () => {
 			const output = patternMock({
-				colors: ['COLOR', {length: 4}] 
+				colors: {
+					__type__: ['COLOR'],
+					__config__: {
+						length: 4
+					}
+				}
 			});
 
 			expect(output.colors.length).toEqual(4);
