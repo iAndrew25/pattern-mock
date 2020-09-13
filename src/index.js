@@ -17,7 +17,7 @@ const {
 	getString,
 	getCounter
 } = require('./generator');
-const {isObject, isFunction} = require('./utils');
+const {isObject, isFunction, isString} = require('./utils');
 const __TYPES__ = require('./__types__');
 const DEFAULT_CONFIG = require('./default-config');
 
@@ -64,63 +64,70 @@ const getValue = ({type, config, itemIndex}) => {
 	}
 };
 
+const stringDispatcher = ({type, config, itemIndex}) => {
+	const {decorate} = config;
+	const value = getValue({type, config, itemIndex});
+
+	return isFunction(decorate) ? decorate(value) : value;	
+}
+
+const arrayDispatcher = ({type, config, itemIndex}) => {
+	const {decorate, decorateEach, length, shouldPickOne, ...rest} = config;
+	const listLength = type.length;
+
+	if(shouldPickOne) return type[getNumber([0, listLength - 1])];
+
+	const isListOfSameType = isString(type[0]) && __TYPES__[type[0]] && listLength === 1;
+	const arrayLength = (isListOfSameType || !isString(type[0])) ? length || getNumber(rest.range) : listLength;
+
+	const list = getNewArray(arrayLength).map((_, index) => dispatcher({
+		type: (isListOfSameType || !isString(type[0])) ? type[0] : type[index],
+		itemIndex: index,
+		config: {
+			...rest,
+			decorate: decorateEach
+		}
+	}));
+
+	return isFunction(decorate) ? decorate(list) : list;	
+}
+
+const objectDispatcher = ({type, config, itemIndex}) => {
+	if(type.hasOwnProperty("__type__")) {
+		const {__type__, __config__ = {}} = type;
+
+		return dispatcher({
+			itemIndex,
+			type: __type__,
+			config: {
+				...config,
+				...__config__
+			}
+		});
+	} else {
+		const {decorate, ...rest} = config;
+
+		const object = Object.entries(type).reduce((total, [key, value]) => ({
+			...total,
+			[key]: dispatcher({
+				itemIndex,
+				type: value,
+				config: rest
+			})
+		}), {});
+		
+		return isFunction(decorate) ? decorate(object) : object;
+	}	
+}
+
 const dispatcher = ({type, config, itemIndex}) => {
 	if(type === null) return null;
 	
-	const {decorate, decorateEach, length, range, shouldPickOne} = config;
+	if(isString(type)) return stringDispatcher({type, config, itemIndex});
 
-	if(typeof type === 'string') {
-		const value = getValue({type, config, itemIndex});
+	if(Array.isArray(type)) return arrayDispatcher({type, config, itemIndex});
 
-		return isFunction(decorate) ? decorate(value) : value;
-	}
-
-	if(Array.isArray(type)) {
-		const listLength = type.length;
-
-		if(shouldPickOne) {
-			return type[getNumber([0, listLength - 1])]
-		}
-
-		const hasOneItem = listLength === 1;
-		const isListOfSameType = __TYPES__[type[0]] && listLength === 1;
-		const arrayLength = !isListOfSameType ? listLength : length || getNumber(range || config.itemsInList);
-
-		const list = getNewArray(arrayLength).map((_, index) => {
-			return dispatcher({
-				type: isListOfSameType ? type[0] : type[index],
-				itemIndex: index,
-				config: {
-					...config,
-					decorate: decorateEach
-				}
-			});
-		});
-
-		return isFunction(decorate) ? decorate(list) : list;
-	}
-
-	if(isObject(type)) {
-		if(type.hasOwnProperty("__type__")) {
-			return dispatcher({
-				itemIndex,
-				type: type.__type__,
-				config: {
-					...config,
-					...(type.__config__ || {})
-				},
-			});
-		} else {
-			return Object.entries(type).reduce((total, [key, value]) => ({
-				...total,
-				[key]: dispatcher({
-					config,
-					itemIndex,
-					type: value
-				})
-			}), {});
-		}
-	}
+	if(isObject(type)) return objectDispatcher({type, config, itemIndex});
 
 	return type;
 };

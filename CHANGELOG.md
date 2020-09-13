@@ -3,16 +3,20 @@
 ### Breaking Changes
 - it is not possible anymore to pass a configuration element to a list as a second element. `patternMock` will now return the actual value if it is not a valid `type`.
 
-### Updated
-- now it is possible to set a configuration object for each property. Instead of setting the type as value for key, now we can pass an object with two properties: 
-	* `__config__` - configuration object.
-	* `__type__` - type.
-
 ### Added
 - the following configuration properties:
 	* `shouldPickOne`  - boolean - return a single value from a list.
 	* `decorate` - function - calls the function with the value as parameter, and returns the function's output.
 	* `decorateEach` - function - calls the function for every value of a list, and returns the function's output.
+
+### Updated
+- now it is possible to set a configuration object for each property. Instead of setting the type as value for key, now we can pass an object with two properties: 
+	* `__config__` - configuration object.
+	* `__type__` - type.
+
+### Removed
+- the following configuration property:
+	* `itemsInList` - it was replaced by `range`.
 
 ## [2.0.0] - 2020-08-20
 ### Updated

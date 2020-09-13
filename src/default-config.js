@@ -1,5 +1,4 @@
 module.exports = {
-	itemsInList: [3, 8],
 	numbersInPhoneNumber: [10, 10],
 	sentencesInParagraph: [3, 6],
 	wordsInSentence: [5, 10],
@@ -7,5 +6,6 @@ module.exports = {
 	lettersInWord: [4, 8],
 	lettersInString: [5, 10],
 	spaceIndexInPhoneNumber: [4, 6, 8],
-	counterStart: 0
+	counterStart: 0,
+	range: [3, 8]
 };
