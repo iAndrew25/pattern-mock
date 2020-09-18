@@ -12,7 +12,7 @@
 ### Updated
 - now it is possible to set a configuration object for each property. Instead of setting the type as value for key, now we can pass an object with two properties: 
 	* `__config__` - configuration object.
-	* `__type__` - type.
+	* `__pattern__` - type.
 
 ### Removed
 - the following configuration property:
