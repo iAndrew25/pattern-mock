@@ -157,6 +157,17 @@ describe('patternMock', () => {
 			fullNames: 'FULL_NAMES'
 		};
 
+		test('should return the right values when passing random types', () => {
+			const input = ['NUMBER', {email: 'EMAIL'}, 'COLOR', ['42', 42]];
+			const output = patternMock({input})
+
+			expect(typeof output.input[0]).toEqual('number');
+			expect(typeof output.input[1].email).toEqual('string');
+			expect(output.input[2].startsWith('#')).toEqual(true);
+			expect(output.input[3][0]).toEqual('42');
+			expect(output.input[3][1]).toEqual(42);
+		});
+
 		test('should return input values when passing unknown types', () => {
 			const output = patternMock({
 				null: null,
@@ -165,7 +176,7 @@ describe('patternMock', () => {
 				string: 'GOLDEN_STAG',
 				function: jest.fn()
 			});
-			
+
 			expect(patternMock({unknownTypeList})).toEqual({unknownTypeList});
 			expect(patternMock({unknownObjectList})).toEqual({unknownObjectList});
 			expect(patternMock({unknownObject})).toEqual({unknownObject});

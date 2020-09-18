@@ -59,7 +59,7 @@ patternMock(pattern, config[);
 * **pattern** - an object which specifies the structure of the result.
 	* `key` - string - property name.
 	* `value` - any - pattern to be mocked (e.g. `name: 'NAME'`).
-		* In case there is a need for passing a config object to a key, the following structured is required:
+		* In case there is a need for passing a config object to a key, the following structure is required:
 			* `__pattern__` - any - pattern to be mocked (just like `value`).
 			* `__config__` - object - `config` (see below)
 
@@ -316,7 +316,7 @@ patternMock({
 				decorateEach: ({age, ...rest}) => ({age: `${age} years old`, ...rest})
 			}
 		},
-		randomStuff: ['NUMBER', {email: 'EMAIL'}, 'COLOR']
+		randomStuff: ['NUMBER', {email: 'EMAIL'}, 'COLOR', ['whatever', 'BOOLEAN']]
 	}
 });
 
@@ -356,7 +356,11 @@ patternMock({
 // 			{
 // 				"email": "nu@sidagapitu.we"
 // 			},
-// 			"#ADC0DB"
+// 			"#ADC0DB",
+//			[
+//				"whatever",
+//				true
+//			]
 // 		]
 // 	}
 // }

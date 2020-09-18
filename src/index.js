@@ -86,9 +86,7 @@ const arrayDispatcher = ({type, config, itemIndex}) => {
 	});
 
 	const isListOfSameType = isString(type[0]) && TYPES[type[0]] && listLength === 1;
-	const isListOfUnknownType = !isString(type[0]) || !TYPES[type[0]];
-
-	const arrayLength = isListOfSameType ? length || getNumber(rest.range) : isListOfUnknownType ? listLength : 1;
+	const arrayLength = isListOfSameType ? length || getNumber(rest.range) : listLength;
 
 	const list = getNewArray(arrayLength).map((_, index) => dispatcher({
 		config: _config,
