@@ -29,7 +29,6 @@ Generates mock data based on a specified object pattern.
 * [License](#License)
 
 ## Installing
-
 You can install it using Node Package Manager (`npm`):
 
 ```
@@ -44,14 +43,13 @@ const patternMock = require('pattern-mock');
 ## Downloading
 The source is available for download on [GitHub](https://github.com/iAndrew25/pattern-mock/blob/master/dist).
 
+## CDN
+The source can also be found on the following CDN:
+
 ```html
-<script src="path/to/yourCopyOf/pattern-mock.js"></script>
+<script src="https://unpkg.com/pattern-mock@3.0.0/dist/pattern-mock.min.js"></script>
 ```
 
-Or the minified version:
-```html
-<script src="path/to/yourCopyOf/pattern-mock.min.js"></script>
-```
 ## Syntax
 ```javascript
 patternMock(pattern, config[);
@@ -59,16 +57,26 @@ patternMock(pattern, config[);
 
 ### Parameters
 * **pattern** - an object which specifies the structure of the result.
+	* `key` - string - property name.
+	* `value` - any - pattern to be mocked (e.g. `name: 'NAME'`).
+		* In case there is a need for passing a config object to a key, the following structure is required:
+			* `__pattern__` - any - pattern to be mocked (just like `value`).
+			* `__config__` - object - `config` (see below)
+
 * **config** - a configuration object which sets configuration and ranges of numbers for generating random data:
-	* `itemsInList` - default `[3, 8]`
-	* `numbersInPhoneNumber` - default `[10, 10]`
-	* `sentencesInParagraph` - default `[3, 6]`
-	* `wordsInSentence` - default `[5, 10]`
-	* `wordsInFullName` - default `[2, 4]`
-	* `lettersInWord` - default `[4, 8]`
-	* `lettersInString` - default `[5, 10]`
-	* `spaceIndexInPhoneNumber` - default `[4, 6, 8]`
-	* `counterStart` - default `0`
+	* `numbersInPhoneNumber` - array - default `[10, 10]`
+	* `sentencesInParagraph` - array - default `[3, 6]`
+	* `wordsInSentence` - array - default `[5, 10]`
+	* `wordsInFullName` - array - default `[2, 4]`
+	* `lettersInWord` - array - default `[4, 8]`
+	* `lettersInString` - array - default `[5, 10]`
+	* `spaceIndexInPhoneNumber` - array - default `[4, 6, 8]`
+	* `counterStart` - number - default `0`
+	* `range` - array - default `[3, 8]`
+	* `length` - number - sets the length of a list.
+	* `decorateEach` - function - calls each element from a list and returns the output.
+	* `decorate` - function - calls the value and returns the output.
+	* `shouldPickOne` - boolean - picks a single value from a list.
 
 ## API
 ### Supported types
@@ -224,7 +232,7 @@ patternMock({
 ```
 
 ### Nesting types
-When creating a list, all we need to do is to add a pattern as first argument such as:
+When creating a list, all we need to do is to add a type as first argument such as:
 
 ```javascript
 patternMock({
@@ -236,53 +244,125 @@ patternMock({
 // }
 ```
 
-The range of the items in list is passed in the config object. We are also able to specify the range of items for the current list by passing an additional object to the list, which accepts the following properties:
-- **length** - number - for setting a fixed length of the list.
-- **range** - list of two numbers - specifying a minimum and maximum length for the list.
-
-```javascript
-patternMock({
-	names: ['FULL_NAME', {range: [5, 7]}]
-});
-
-// {
-// 	names: ["Bovezus Qaheba", "Xohu Bovub Dime", "Qegoruwi Nopoq", "Boyeta Wadag", "Divodoja Naxoqe Woyem", "Zagotay Yepapiso Jamu", "Dezacaz Jajigo"]
-// }
-```
-
 Nesting more types:
 
 ```javascript
 patternMock({
-	id: 'NUMBER',
-	name: 'FULL_NAME',
-	description: 'SENTENCE',
-	price: 'CUSTOM_NUMBER_10-30',
-	expirationDate: 'DATE',
-	ingredients: [{
-		id: 'COUNTER',
-		name: 'WORD',
-		quantity: 'CUSTOM_NUMBER_5-13'
-	}, {
-		length: 2
-	}]
+	person: {
+		name: 'FULL_NAME',
+		age: 'CUSTOM_NUMBER_17-26',
+		hobbies: ['WORD'],
+		isCool: 'BOOLEAN'
+	}
 });
 
 // {
-// 	id: 677404510061448,
-// 	name: 'Geqi Tacariwi Pitaheba Pala',
-// 	description: 'Turar suvete wofah xuvome hofufi laboma nihigilu teqiz.',
-// 	price: 23,
-// 	expirationDate: '1958-04-23T02:48:28.493Z',
-// 	ingredients: [{
-// 		id: 0,
-// 		name: 'bigohu',
-// 		quantity: 6
-// 	}, {
-// 		id: 1,
-// 		name: 'ceboxodi',
-// 		quantity: 12
-// 	}]
+// 	person": {
+// 		"name": "Guya Caro Sacusip Datig",
+// 		"age": 22,
+// 		"hobbies": [
+// 			"jaxen",
+// 			"ragodutu",
+// 			"noxefu"
+// 		],
+// 		"isCool": true
+// 	}
+// }
+```
+
+For a more complex and custom structure, we can use different `__config__` properties, followed by `__pattern__` which will be the value for our property:
+
+```javascript
+patternMock({
+	yearOfBirth: {
+		__pattern__: 'DATE',
+		__config__: {
+			decorate: date => date.getFullYear()
+		}
+	}
+});
+
+// {
+// 	"yearOfBirth": 1985
+// }
+```
+
+Or a more nested and complex structure:
+
+```javascript
+patternMock({
+	person: {
+		name: 'FULL_NAME',
+		hobbies: ['WORD'],
+		bestAt: {
+			__pattern__: ['losing at games', 'being rejected'],
+			__config__: {
+				decorate: list => list.join(', ')
+			}
+		},
+		friends: {
+			__pattern__: [{
+				name: 'FULL_NAME',
+				age: 'CUSTOM_NUMBER_17-26',
+				favouriteGame: {
+					__pattern__: ['LEAGUE OF LEGENDS', 'DOTA', 'SMITE'],
+					__config__: {
+						shouldPickOne: true
+					}
+				}
+			}],
+			__config__: {
+				length: 3,
+				decorateEach: ({age, ...rest}) => ({age: `${age} years old`, ...rest})
+			}
+		},
+		randomStuff: ['NUMBER', {email: 'EMAIL'}, 'COLOR', ['whatever', 'BOOLEAN']]
+	}
+});
+
+// {
+// 	"person": {
+// 		"name": "Yihoruhi Ruqu Jevimi",
+// 		"hobbies": [
+// 			"febo",
+// 			"nowo",
+// 			"wemoxox",
+// 			"coquna",
+// 			"rere",
+// 			"sujof",
+// 			"gage",
+// 			"pizamic"
+// 		],
+// 		"bestAt": "losing at games, being rejected",
+// 		"friends": [
+// 			{
+// 				"age": "17 years old",
+// 				"name": "Wuvew Dusuto",
+// 				"favouriteGame": "LEAGUE OF LEGENDS"
+// 			},
+// 			{
+// 				"age": "22 years old",
+// 				"name": "Pexujuba Wuwizur",
+// 				"favouriteGame": "DOTA"
+// 			},
+// 			{
+// 				"age": "24 years old",
+// 				"name": "Buwed Mazopaze",
+// 				"favouriteGame": "SMITE"
+// 			}
+// 		],
+// 		"randomStuff": [
+// 			4658847147811904,
+// 			{
+// 				"email": "nu@sidagapitu.we"
+// 			},
+// 			"#ADC0DB",
+//			[
+//				"whatever",
+//				true
+//			]
+// 		]
+// 	}
 // }
 ```
 
