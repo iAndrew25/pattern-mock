@@ -9,7 +9,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/iAndy3/pattern-mock.git"
+		"url": "git://github.com/iAndrew25/pattern-mock.git"
 	},
 	"keywords": [
 		"mock",
@@ -21,12 +21,12 @@
 	"author": "Andrew",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/iAndy3/pattern-mock/issues"
+		"url": "https://github.com/iAndrew25/pattern-mock/issues"
 	},
 	"files": [
 		"dist/pattern-mock.min.js"
 	],
-	"homepage": "https://github.com/iAndy3/pattern-mock#readme",
+	"homepage": "https://github.com/iAndrew25/pattern-mock#readme",
 	"devDependencies": {
 		"@rollup/plugin-commonjs": "^15.0.0",
 		"jest": "^24.8.0",
