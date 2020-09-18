@@ -18,45 +18,45 @@ const {
 	getCounter
 } = require('./generator');
 const {isObject, isFunction, isString} = require('./utils');
-const __TYPES__ = require('./__types__');
+const TYPES = require('./types');
 const DEFAULT_CONFIG = require('./default-config');
 
 const getValue = ({type, config, itemIndex}) => {
 	switch(type) {
-		case __TYPES__.WORD:
+		case TYPES.WORD:
 			return getWord(config);
-		case __TYPES__.NAME:
+		case TYPES.NAME:
 			return getName(config);
-		case __TYPES__.FULL_NAME:
+		case TYPES.FULL_NAME:
 			return getFullName(config);
-		case __TYPES__.SENTENCE:
+		case TYPES.SENTENCE:
 			return getSentence(config);
-		case __TYPES__.PARAGRAPH:
+		case TYPES.PARAGRAPH:
 			return getParagraph(config);
-		case __TYPES__.STRING:
+		case TYPES.STRING:
 			return getString(config);
 
-		case __TYPES__.URL:
+		case TYPES.URL:
 			return getUrl('http://');
-		case __TYPES__.EMAIL:
+		case TYPES.EMAIL:
 			return getEmail();
-		case __TYPES__.COLOR:
+		case TYPES.COLOR:
 			return getColor();
 
-		case __TYPES__.BOOLEAN:
+		case TYPES.BOOLEAN:
 			return getBoolean();
-		case __TYPES__.DATE:
+		case TYPES.DATE:
 			return getDate();
 
-		case __TYPES__.COUNTER:
+		case TYPES.COUNTER:
 			return getCounter(itemIndex, config);
-		case __TYPES__.NUMBER:
+		case TYPES.NUMBER:
 			return getInteger();
-		case __TYPES__.PHONE_NUMBER:
+		case TYPES.PHONE_NUMBER:
 			return getPhoneNumber(config);
 
 		default:
-			if(type.startsWith(__TYPES__.CUSTOM_NUMBER)) {
+			if(type.startsWith(TYPES.CUSTOM_NUMBER)) {
 				return getCustomInteger(type);
 			}
 
@@ -74,31 +74,38 @@ const stringDispatcher = ({type, config, itemIndex}) => {
 const arrayDispatcher = ({type, config, itemIndex}) => {
 	const {decorate, decorateEach, length, shouldPickOne, ...rest} = config;
 	const listLength = type.length;
+	const _config = {
+		...rest,
+		decorate: decorateEach
+	}
 
-	if(shouldPickOne) return type[getNumber([0, listLength - 1])];
+	if(shouldPickOne) return dispatcher({
+		itemIndex,
+		config: _config,
+		type: type[getNumber([0, listLength - 1])]
+	});
 
-	const isListOfSameType = isString(type[0]) && __TYPES__[type[0]] && listLength === 1;
-	const arrayLength = (isListOfSameType || !isString(type[0])) ? length || getNumber(rest.range) : listLength;
+	const isListOfSameType = isString(type[0]) && TYPES[type[0]] && listLength === 1;
+	const isListOfUnknownType = !isString(type[0]) || !TYPES[type[0]];
+
+	const arrayLength = isListOfSameType ? length || getNumber(rest.range) : isListOfUnknownType ? listLength : 1;
 
 	const list = getNewArray(arrayLength).map((_, index) => dispatcher({
-		type: (isListOfSameType || !isString(type[0])) ? type[0] : type[index],
+		config: _config,
 		itemIndex: index,
-		config: {
-			...rest,
-			decorate: decorateEach
-		}
+		type: (isListOfSameType || (!isString(type[0])) && listLength === 1) ? type[0] : type[index]
 	}));
 
-	return isFunction(decorate) ? decorate(list) : list;	
+	return isFunction(decorate) ? decorate(list) : list;
 }
 
 const objectDispatcher = ({type, config, itemIndex}) => {
-	if(type.hasOwnProperty("__type__")) {
-		const {__type__, __config__ = {}} = type;
+	if(type.hasOwnProperty("__pattern__")) {
+		const {__pattern__, __config__ = {}} = type;
 
 		return dispatcher({
 			itemIndex,
-			type: __type__,
+			type: __pattern__,
 			config: {
 				...config,
 				...__config__

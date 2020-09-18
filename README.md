@@ -273,17 +273,17 @@ patternMock({
 		name: 'FULL_NAME',
 		hobbies: ['WORD'],
 		bestAt: {
-			__type__: ['losing at games', 'being rejected'],
+			__pattern__: ['losing at games', 'being rejected'],
 			__config__: {
 				decorate: list => list.join(', ')
 			}
 		},
 		friends: {
-			__type__: [{
+			__pattern__: [{
 				name: 'FULL_NAME',
 				age: 'CUSTOM_NUMBER_17-26',
 				favouriteGame: {
-					__type__: ['LEAGUE OF LEGENDS', 'DOTA', 'SMITE'],
+					__pattern__: ['LEAGUE OF LEGENDS', 'DOTA', 'SMITE'],
 					__config__: {
 						shouldPickOne: true
 					}
