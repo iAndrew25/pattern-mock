@@ -52,7 +52,7 @@ The source can also be found on the following CDN:
 
 ## Syntax
 ```javascript
-patternMock(pattern, config[);
+patternMock(pattern[, config]);
 ```
 
 ### Parameters
