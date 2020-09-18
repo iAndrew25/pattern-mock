@@ -1,5 +1,5 @@
 # Changelog
-## [3.0.0] - 2020-09-13
+## [3.0.0] - 2020-09-18
 ### Breaking Changes
 - it is not possible anymore to pass a configuration element to a list as a second element. `patternMock` will now return the actual value if it is not a valid `type`.
 
