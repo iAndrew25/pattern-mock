@@ -57,6 +57,12 @@ patternMock(pattern, config[);
 
 ### Parameters
 * **pattern** - an object which specifies the structure of the result.
+	* `key` - string - property name.
+	* `value` - any - pattern to be mocked (e.g. `name: 'NAME'`).
+		* In case there is a need for passing a config object to a key, the following structured is required:
+			* `__pattern__` - any - pattern to be mocked (just like `value`).
+			* `__config__` - object - `config` (see below)
+
 * **config** - a configuration object which sets configuration and ranges of numbers for generating random data:
 	* `numbersInPhoneNumber` - array - default `[10, 10]`
 	* `sentencesInParagraph` - array - default `[3, 6]`
@@ -262,10 +268,26 @@ patternMock({
 // 		"isCool": true
 // 	}
 // }
-
 ```
 
-For a more complex and custom structure, we can use different `__config__` properties:
+For a more complex and custom structure, we can use different `__config__` properties, followed by `__pattern__` which will be the value for our property:
+
+```javascript
+patternMock({
+	yearOfBirth: {
+		__pattern__: 'DATE',
+		__config__: {
+			decorate: date => date.getFullYear()
+		}
+	}
+});
+
+// {
+// 	"yearOfBirth": 1985
+// }
+```
+
+Or a more nested and complex structure:
 
 ```javascript
 patternMock({
