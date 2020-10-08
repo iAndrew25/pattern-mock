@@ -285,7 +285,14 @@ describe('patternMock', () => {
 			});
 
 			expect(output.numbers).toEqual([...list, 'three']);
-		});		
+		});
+
+		test('should return a list with one item when passing an unknown pattern', () => {
+			expect(patternMock({
+				test: ['ITEM']
+			}).test.length).toEqual(1);
+		});
+
 	});
 
 	describe('nested types', () => {
@@ -313,6 +320,7 @@ describe('patternMock', () => {
 					})
 				])
 			});
+			expect(output.people.length > 3).toEqual(true);
 		});
 
 		test('should return a counter starting from default value', () => {
