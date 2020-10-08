@@ -85,13 +85,13 @@ const arrayDispatcher = ({type, config, itemIndex}) => {
 		type: type[getNumber([0, listLength - 1])]
 	});
 
-	const isListOfSameType = isString(type[0]) && TYPES[type[0]] && listLength === 1;
-	const arrayLength = isListOfSameType ? length || getNumber(rest.range) : listLength;
+	const isPattern = ((isString(type[0]) && TYPES[type[0]]) || isObject(type[0])) && listLength === 1;
+	const arrayLength = isPattern ? length || getNumber(rest.range) : listLength;
 
 	const list = getNewArray(arrayLength).map((_, index) => dispatcher({
 		config: _config,
 		itemIndex: index,
-		type: (isListOfSameType || (!isString(type[0])) && listLength === 1) ? type[0] : type[index]
+		type: (isPattern || (!isString(type[0])) && listLength === 1) ? type[0] : type[index]
 	}));
 
 	return isFunction(decorate) ? decorate(list) : list;

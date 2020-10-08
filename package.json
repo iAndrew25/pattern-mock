@@ -1,6 +1,6 @@
 {
 	"name": "pattern-mock",
-	"version": "3.0.0",
+	"version": "3.0.1",
 	"description": "Generates mock data based on a specified object pattern.",
 	"main": "dist/pattern-mock.min.js",
 	"scripts": {
