@@ -1,4 +1,8 @@
 # Changelog
+## [3.0.2] - 2020-10-08
+### Updated
+- `README.MD` and `pattern-mock.min.js`
+
 ## [3.0.1] - 2020-10-08
 ### Fixed
 - issue when passing a list with an object as pattern, it won't generate more than one mocked object.
