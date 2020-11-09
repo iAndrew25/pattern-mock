@@ -64,6 +64,14 @@ const getValue = ({type, config, itemIndex}) => {
 	}
 };
 
+const isTypePattern = ({type, listLength}) => {
+	const isTypeString = isString(type);
+	const isTypeObject = isObject(type);
+	const isTypeKnownPattern = isTypeString && (TYPES[type] || type.startsWith(TYPES.CUSTOM_NUMBER));
+
+	return (isTypeKnownPattern || isTypeObject) && listLength === 1;
+}
+
 const stringDispatcher = ({type, config, itemIndex}) => {
 	const {decorate} = config;
 	const value = getValue({type, config, itemIndex});
@@ -85,7 +93,7 @@ const arrayDispatcher = ({type, config, itemIndex}) => {
 		type: type[getNumber([0, listLength - 1])]
 	});
 
-	const isPattern = ((isString(type[0]) && TYPES[type[0]]) || isObject(type[0])) && listLength === 1;
+	const isPattern = isTypePattern({type: type[0], listLength});
 	const arrayLength = isPattern ? length || getNumber(rest.range) : listLength;
 
 	const list = getNewArray(arrayLength).map((_, index) => dispatcher({

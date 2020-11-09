@@ -239,6 +239,21 @@ describe('patternMock', () => {
 			expect(typeListPickDecorateEach.value.endsWith('ing.')).toEqual(true);
 		});
 
+		test('should call `decorate` for the first layer of props', () => {
+			const decorate = jest.fn(({name}) => ({name: `${name}-end`}));
+
+			const output = patternMock({
+				__pattern__: {
+					name: 'NAME'
+				},
+				__config__: {
+					decorate
+				}
+			});
+
+			expect(output.name.endsWith('-end')).toEqual(true);
+		});
+
 		test('should call `decorateEach` for each item', () => {
 			const decorateEach = jest.fn();
 			const called = 5;
@@ -291,6 +306,17 @@ describe('patternMock', () => {
 			expect(patternMock({
 				test: ['ITEM']
 			}).test.length).toEqual(1);
+		});
+
+		test('should return a list of random numbers', () => {
+			expect(patternMock({
+				test: {
+					__pattern__: ['CUSTOM_NUMBER_20-30'],
+					__config__: {
+						length: 10
+					}
+				}
+			}).test.length).toEqual(10);
 		});
 
 	});

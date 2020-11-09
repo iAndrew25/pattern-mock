@@ -1,4 +1,8 @@
 # Changelog
+## [3.0.3] - 2020-11-09
+### Fixed
+- issue when passing a list of `CUSTOM_NUMBER` will return an array with a single value.
+
 ## [3.0.2] - 2020-10-08
 ### Updated
 - `README.MD` and `pattern-mock.min.js`

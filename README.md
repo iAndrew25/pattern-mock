@@ -47,7 +47,7 @@ The source is available for download on [GitHub](https://github.com/iAndrew25/pa
 The source can also be found on the following CDN:
 
 ```html
-<script src="https://unpkg.com/pattern-mock@3.0.2/dist/pattern-mock.min.js"></script>
+<script src="https://unpkg.com/pattern-mock@3.0.3/dist/pattern-mock.min.js"></script>
 ```
 
 ## Syntax
